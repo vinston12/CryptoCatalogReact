@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Crypto from "./Crypto";
 import axios from "axios";
+import RandomColorTable from './RandomColorTable';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -8,6 +9,7 @@ const App = () => {
   useEffect(() => { // hook ktory laczy metody m.in. componentDidMount 
     axios.get("http://localhost:8080/map").then((response) => {
       setData(response.data);
+      <RandomColorTable></RandomColorTable>
     });
   }, []);// te klamry sa tu po to zeby nie odwiezalo nam sie ch chwile tylko raz na przealadowanuie
 

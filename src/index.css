@@ -1,9 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-
 .main-header{
     background-color: beige;
     padding-bottom: 5px;
@@ -37,7 +34,7 @@ th {
   
   
   .toggle-btn:hover {
-    background-color: #3e8e41;
+    background-color: #fff;
   }
 
  tr.shown, tr.hidden {

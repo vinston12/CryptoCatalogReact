@@ -1,15 +1,32 @@
-function toggle(btnID, eID) {
-  const theRow = document.querySelector(eID);
-  const theButton = document.getElementById(btnID);
-  const isExpanded = theButton.getAttribute("aria-expanded") === "true";
+const toggle = (buttonId, contentId) => {
+  const content = document.querySelector(contentId);
+  const button = document.getElementById(buttonId);
 
-  if (isExpanded) {
-    theRow.classList.add("hidden");
-    theRow.classList.remove("shown");
+  if (content.classList.contains("visually-hidden")) {
+    content.classList.remove("visually-hidden");
+    content.style.height = "auto";
+    const height = content.clientHeight + "px";
+    content.style.height = "0px";
+
+    setTimeout(() => {
+      content.style.height = height;
+    }, 0);
+
+    button.setAttribute("aria-expanded", "true");
   } else {
-    theRow.classList.add("shown");
-    theRow.classList.remove("hidden");
+    content.style.height = "0px";
+
+    content.addEventListener(
+      "transitionend",
+      () => {
+        content.classList.add("visually-hidden");
+      },
+      {
+        once: true,
+      }
+    );
+
+    button.setAttribute("aria-expanded", "false");
   }
-  theButton.setAttribute("aria-expanded", !isExpanded);
-}
+};
   export default toggle;

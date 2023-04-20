@@ -8,62 +8,67 @@ import toggle from './toggle';
 import RandomColorTable from './RandomColorTable';
 
 const Crypto = ({ data }) => {
- 
-
   const [search, setSearch] = useState("");
+  const [expandedRow, setExpandedRow] = useState(null);
+
+  const toggleExpansion = (id) => {
+    if (id === expandedRow) {
+      setExpandedRow(null);
+    } else {
+      setExpandedRow(id);
+    }
+  };
+
   return (
-    <div className="App">
-      <Container>
-        <header className="main-header ">
-          <h1 className="text-center mt-4">Wyszukiwarka crypto</h1>
-        </header>
+      <div>
         <Search search={search} setSearch={setSearch} />
-        <RandomColorTable>
-          <Table>
-            <caption className="caption-top">Wynik zapytania z bazy</caption>
-            <thead>
-              <tr className="odd:bg-white even:bg-slate-50">
-                <th className="border border-slate-300">Id</th>
-                <th className="border border-slate-300">User ID</th>
-                <th className="border border-slate-300">Title</th>
-                <th className="border border-slate-300">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data
-                .filter((item) =>
+         <RandomColorTable>
+        <Table>
+          <caption className="caption-top">Wynik zapytania z bazy</caption>
+          <thead>
+          <tr >
+            <th>Id</th>
+            <th>User ID</th>
+            <th>Title</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          {data
+              .filter((item) =>
                   search === "" ? item : item.title.includes(search)
-                )
-                .map((item) => (
+              )
+              .map((item) => (
                   <React.Fragment key={item.id}>
-                    <tr className="random-background">
-                      <td className="border border-slate-300">{item.id}</td>
-                      <td className="border border-slate-300">{item.userId}</td>
-                      <td className="border border-slate-300">{item.title}</td>
+                    <tr className='random-background'>
+                      <td>{item.id}</td>
+                      <td>{item.userId}</td>
+                      <td>{item.title}</td>
                       <td>
                         <button
-                          className="btn btn-info"
-                          type="button"
-                          id={`btnMSb${item.id}`}
-                          aria-expanded="false"
-                          onClick={() => toggle(`btnMSb${item.id}`, `#MS01b${item.id}`)}
-                          aria-controls={`MS01b${item.id}`}
-                          aria-label={`More information about ${item.title}`}>
-                          Rozwiń</button>
+                            className="btn btn-info"
+                            type="button"
+                            id={`btnMSb${item.id}`}
+                            onClick={() => toggleExpansion(item.id)}
+                            aria-expanded="false"
+                            aria-controls={`MS01b${item.id}`}
+                            aria-label={`More information about ${item.title}`}
+                        >
+                          {expandedRow === item.id ? "Zwiń" : "Rozwiń"}
+                        </button>
                       </td>
                     </tr>
-                    <tr id={`MS01b${item.id}`}
-                        className="visually-hidden"
-                        style={{ height: "100px", overflow: "hidden" }}>
-                        <td colSpan="4">{item.body}</td>
-                    </tr>
+                    {expandedRow === item.id && (
+                        <tr>
+                          <td colSpan="4">{item.body}</td>
+                        </tr>
+                    )}
                   </React.Fragment>
-                ))}
-            </tbody>
-          </Table>
+              ))}
+          </tbody>
+        </Table>
         </RandomColorTable>
-      </Container>
-    </div>
+      </div>
   );
 };
 
