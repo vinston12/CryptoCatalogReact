@@ -1,32 +1,18 @@
-const toggle = (buttonId, contentId) => {
-  const content = document.querySelector(contentId);
-  const button = document.getElementById(buttonId);
+import React, { useState } from 'react';
 
-  if (content.classList.contains("visually-hidden")) {
-    content.classList.remove("visually-hidden");
-    content.style.height = "auto";
-    const height = content.clientHeight + "px";
-    content.style.height = "0px";
+export const UseToggle = () => {
 
-    setTimeout(() => {
-      content.style.height = height;
-    }, 0);
+  const [expandedRow, setExpandedRow] = useState(null);
+   const toggleExpansion = (id) => {
+    if (id === expandedRow) {
+      setExpandedRow(null);
+    } else {
+      setExpandedRow(id);
+    }
+  };
 
-    button.setAttribute("aria-expanded", "true");
-  } else {
-    content.style.height = "0px";
-
-    content.addEventListener(
-      "transitionend",
-      () => {
-        content.classList.add("visually-hidden");
-      },
-      {
-        once: true,
-      }
-    );
-
-    button.setAttribute("aria-expanded", "false");
-  }
+  return {
+    expandedRow,
+    toggleExpansion
+  };
 };
-  export default toggle;

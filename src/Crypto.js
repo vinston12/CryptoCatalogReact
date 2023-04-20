@@ -4,25 +4,18 @@ import Table from 'react-bootstrap/Table';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import toggle from './toggle';
+import { UseToggle } from './Toggle';
 import RandomColorTable from './RandomColorTable';
+
 
 const Crypto = ({ data }) => {
   const [search, setSearch] = useState("");
-  const [expandedRow, setExpandedRow] = useState(null);
-
-  const toggleExpansion = (id) => {
-    if (id === expandedRow) {
-      setExpandedRow(null);
-    } else {
-      setExpandedRow(id);
-    }
-  };
+  const { expandedRow, toggleExpansion } = UseToggle();
 
   return (
       <div>
         <Search search={search} setSearch={setSearch} />
-         <RandomColorTable>
+         
         <Table>
           <caption className="caption-top">Wynik zapytania z bazy</caption>
           <thead>
@@ -67,7 +60,6 @@ const Crypto = ({ data }) => {
               ))}
           </tbody>
         </Table>
-        </RandomColorTable>
       </div>
   );
 };
