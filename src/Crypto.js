@@ -9,13 +9,14 @@ import RandomColorTable from './RandomColorTable';
 
 
 const Crypto = ({ data }) => {
+  
   const [search, setSearch] = useState("");
   const { expandedRow, toggleExpansion } = UseToggle();
 
   return (
       <div>
         <Search search={search} setSearch={setSearch} />
-         
+        <RandomColorTable>
         <Table>
           <caption className="caption-top">Wynik zapytania z bazy</caption>
           <thead>
@@ -60,6 +61,7 @@ const Crypto = ({ data }) => {
               ))}
           </tbody>
         </Table>
+        </RandomColorTable>
       </div>
   );
 };

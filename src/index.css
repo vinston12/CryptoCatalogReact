@@ -50,3 +50,6 @@ tr.visually-hidden {
   width: auto;
   height: 500px;
 }
+button {
+  width: 100px;
+}
