@@ -53,6 +53,9 @@ tr.visually-hidden {
   width: auto;
   height: 500px;
 }
+tr.btn {
+  float: right;
+}
 button {
   width: 100px;
 }
@@ -62,4 +65,19 @@ button {
 
 .row-color:nth-child(even) {
   background-color: #edf2f7;
+}
+.searchForm{
+  z-index: 0;
+}
+.align-right{
+  text-align: right;
+}
+.popup{
+  z-index: 2;
+}
+.popup-inner {
+  z-index: 3;
+}
+.intervals{
+  display: flex;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Crypto from "./Crypto";
+import Crypto from "./MainFolder/Crypto";
 import axios from "axios";
 
 const App = () => {
