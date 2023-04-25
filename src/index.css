@@ -1,8 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.main-header{
-    background-color: beige;
+.bg-blue-500 {
+  background-color: #4299e1;
+}
+body{
+    background-color: rgb(214, 214, 50);
     padding-bottom: 5px;
 }
 
@@ -52,4 +55,11 @@ tr.visually-hidden {
 }
 button {
   width: 100px;
+}
+.row-color:nth-child(odd) {
+  background-color: #fff;
+}
+
+.row-color:nth-child(even) {
+  background-color: #edf2f7;
 }
