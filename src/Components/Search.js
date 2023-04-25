@@ -11,7 +11,7 @@ const Search = ({ search, setSearch }) => {
             onChange={(e) => setSearch(e.target.value.toLowerCase())}
             placeholder='Wyszukaj kryptowalute'
           />
-          <button class="btn btn-outline-secondary" type="button" onClick={() => SearchCrypto()}>Szukaj</button>
+          <button class='btn btn-outline-dark' type="button" onClick={() => SearchCrypto()}>Szukaj</button>
         </InputGroup>
       </Form>
     );

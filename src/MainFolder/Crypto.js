@@ -17,9 +17,7 @@ const Crypto = ({ data }) => {
   return (
      
      <div>
-        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-          <h3>To jest niezly popup!</h3>
-          </Popup>
+        
            <Container>
           <header className='main-header'>
           <h1 className='text-center mt-4'>Wyszukiwarka crypto</h1>
@@ -45,7 +43,9 @@ const Crypto = ({ data }) => {
                   search === "" ? item : item.title.includes(search)
               )
               .map((item) => (
+                
                   <React.Fragment key={item.id}>
+                    
                     <tr className="row-color border border-slate-300" onClick={() => toggleExpansion(item.id)} >
                       <td className='border border-slate-300'>{item.id}</td>
                       <td className='border border-slate-300'>{item.userId}</td>
@@ -56,8 +56,12 @@ const Crypto = ({ data }) => {
                     
                           <td className='border border-slate-300' colSpan="4">{item.body}
                          <div className='align-right'>
-                          <button class='btn btn-outline-dark' onClick={() => setButtonPopup(true)} >Przycisk do popup!</button>
+                          <button class='btn btn-outline-dark' onClick={() => setButtonPopup(true)} >Popup</button>
                           </div>
+                          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                            <h3>{item.id}</h3>
+                            <span>{item.title}</span>
+                            </Popup>
                           </td>
                           
                         </tr>
